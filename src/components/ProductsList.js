@@ -7,7 +7,7 @@ export class ProductList extends Component {
 
     this.state = {
       query: props.query,
-      categorieId: prop.categorieId,
+      categorieId: props.categorieId,
       products: [],
     };
   }
