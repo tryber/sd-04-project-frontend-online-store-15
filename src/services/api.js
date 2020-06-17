@@ -16,3 +16,8 @@ export const getProductsFromCategoryAndQuery = (categoryId, query) => {
   return fetch(`https://api.mercadolibre.com/sites/MLB/search?category=${categoryId}&q=${query}`)
     .then((response) => response.json());
 };
+
+export const getDetails = (id) => {
+  return fetch(`ttps://api.mercadolibre.com/items/${id}`)
+    .then(response => response.json());
+};
