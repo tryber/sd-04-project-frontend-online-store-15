@@ -7,6 +7,10 @@ export class ProductList extends Component {
     this.state = { searchText: props.searchText };
   }
 
+  componentDidMount = () => {
+    const { searchText } = this.state;
+  };
+
   render() {
     return <div />;
   }
