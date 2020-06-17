@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import * as api from '../services/api';
 
 export class ProductList extends Component {
@@ -9,34 +10,40 @@ export class ProductList extends Component {
       query: props.query,
       categorieId: props.categorieId,
       products: [],
+      redirectToProduct: '',
     };
   }
 
   componentDidMount() {
-    this.setState({ products: this.getProducts() });
+    this.getProducts();
   }
 
   getProducts() {
-    const { query, categorieId } = this.state;
-    let products = [];
+    const { categorieId, query } = this.state;
 
-    if (query && !categorieId) {
-      products = api.getProductsFromCategoryAndQuery(null, query);
-    } else if (!query && categorieId) {
-      products = api.getProductsFromCategoryAndQuery(categorieId, null);
-    } else {
-      products = api.getProductsFromCategoryAndQuery(categorieId, query);
-    }
+    api
+      .getProductsFromCategoryAndQuery(categorieId, query)
+      .then((data) => this.setState({ products: data.results }));
+  }
 
-    return products;
+  handleProductClick(id) {
+    this.setState({ redirectToProduct: id });
   }
 
   render() {
-    const { products } = this.state;
+    const { products, redirectToProduct } = this.state;
+
+    if (redirectToProduct) return <Redirect to={`details/${redirectToProduct}`} />;
+
     return (
       <div>
         {products.map((product) => (
-          <div data-testid="product" className="product-card">
+          <div
+            data-testid="product"
+            key={product.id}
+            className="product-card"
+            onClick={() => this.handleProductClick(product.id)}
+          >
             <div className="product-title">{product.title}</div>
             <div className="product-info">
               <img src={product.thumbnail} alt="product" />
