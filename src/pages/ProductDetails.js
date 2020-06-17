@@ -3,11 +3,13 @@ import * as Api from '../services/api';
 
 class Details extends Component {
   async componentDidMount() {
-    const {
-      title, price, pictures, attributes,
-      currency_id: currency, available_quantity: available,
-    } = await Api.getDetails(this.props.match.params.id);
-    this.setState({ title, price, currency, available, pictures, attributes });
+    Api.getDetails('MLB1191972200').then((data) => {
+      const {
+        title, price, pictures, attributes,
+        currency_id: currency, available_quantity: available,
+      } = data;
+      this.setState({ title, price, currency, available, pictures, attributes });
+    });
   }
 
   render() {
