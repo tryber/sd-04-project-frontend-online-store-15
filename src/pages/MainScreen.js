@@ -7,9 +7,7 @@ import SearchBar from '../components/SearchBar';
 class MainScreen extends Component {
   constructor() {
     super();
-    this.state = {
-      categories: [],
-    };
+    this.state = { categories: [] };
   }
 
   componentDidMount() {
