@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
+import * as Api from '../services/api';
 
 class Details extends Component {
-  componentDidMount() {
-    fetch('https://api.mercadolibre.com/items/MLB1191972200')
-      .then((res) => res.json())
-      .then((details) => {
-        const { title, price, currency_id: currency, available_quantity: available, pictures } = details;
-        this.setState({ title, price, currency, available, pictures });
-      });
+  async componentDidMount() {
+    const {
+      title, price, pictures,
+      currency_id: currency, available_quantity: available,
+    } = await Api.getDetails(this.props.match.params.id);
+    this.setState({ title, price, currency, available, pictures });
   }
 
   render() {
@@ -18,7 +18,8 @@ class Details extends Component {
           <h1 data-testid="product-detail-name">{title}</h1>
           <img src={pictures[0].url} alt="Product" />
           <p>
-            {currency}:
+            {currency}
+            :
             {price}
           </p>
           <p>
