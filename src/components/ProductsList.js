@@ -35,17 +35,15 @@ export class ProductList extends Component {
     const { products } = this.state;
     return (
       <div>
-        {products.map((product) => {
-          return (
-            <div data-testid="product" className="product-card">
-              <div className="product-title">{product.title}</div>
-              <div className="product-info">
-                <img src={product.thumbnail} alt="product" />
-                <p>{`R$ ${product.price}`}</p>
-              </div>
+        {products.map((product) => (
+          <div data-testid="product" className="product-card">
+            <div className="product-title">{product.title}</div>
+            <div className="product-info">
+              <img src={product.thumbnail} alt="product" />
+              <p>{`R$ ${product.price}`}</p>
             </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
     );
   }
