@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import * as Api from '../services/api';
 import Category from '../components/Category';
 import SearchBar from '../components/SearchBar';
+import ProductList from '../components/ProductsList';
 
 class MainScreen extends Component {
   constructor() {
@@ -10,6 +11,8 @@ class MainScreen extends Component {
     this.state = {
       categories: [],
       products: [],
+      selectedCategory: '',
+      searchQuery: '',
     };
   }
 
@@ -20,12 +23,13 @@ class MainScreen extends Component {
   render() {
     const { categories } = this.state;
     return (
-      <div
-        data-testid="home-initial-message"
-      >
+      <div data-testid="home-initial-message">
         <SearchBar />
-        <Link data-testid="shopping-cart-button" to="/shopCart">Botão CARRINHO</Link>
+        <Link data-testid="shopping-cart-button" to="/shopCart">
+          Botão CARRINHO
+        </Link>
         <Category categories={categories} />
+        <ProductList categorieId="MLB1055" query="xiaomi" />
       </div>
     );
   }
