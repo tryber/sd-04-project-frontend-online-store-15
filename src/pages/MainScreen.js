@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import * as Api from '../services/api';
-import ShopCart from './ShopCart';
-import Category from './Category';
+import Category from '../components/Category';
+import SearchBar from '../components/SearchBar';
+import { Link } from 'react-router-dom';
 
 class MainScreen extends Component {
   constructor() {
@@ -22,7 +23,8 @@ class MainScreen extends Component {
       <div
         data-testid="home-initial-message"
       >
-        <ShopCart />
+        <SearchBar />
+        <Link data-testid="shopping-cart-button" to="/shopCart">Botão CARRINHO</Link>
         <Category categories={categories} />
       </div>
     );

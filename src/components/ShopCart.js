@@ -7,7 +7,6 @@ class ShopCart extends Component {
     return (
       <div>
         <SearchBar />
-        <h1 data-testid="shopping-cart-empty-message">Seu carrinho está vazio</h1>
         <button data-testid="shopping-cart-button" type="button">Botão CARRINHO</button>
       </div>
     );

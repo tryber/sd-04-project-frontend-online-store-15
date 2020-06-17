@@ -1,15 +1,14 @@
 import React from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import './App.css';
-import { Initial } from './pages';
-import MainScreen from './components/MainScreen';
+import { MainScreen, Cart } from './pages';
 
 function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" component={Initial} />
-        <MainScreen />
+        <Route exact path="/" component={MainScreen} />
+        <Route path="/shopCart" component={Cart} />
       </Switch>
     </BrowserRouter>
   );
