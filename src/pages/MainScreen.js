@@ -23,7 +23,7 @@ class MainScreen extends Component {
   render() {
     const { categories } = this.state;
     return (
-      <div data-testid="home-initial-message">
+      <div>
         <SearchBar />
         <Link data-testid="shopping-cart-button" to="/shopCart">
           Botão CARRINHO
@@ -32,7 +32,6 @@ class MainScreen extends Component {
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
         <Category categories={categories} />
-        <ProductList categorieId="MLB1055" query="xiaomi" />
       </div>
     );
   }
