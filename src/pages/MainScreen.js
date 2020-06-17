@@ -28,6 +28,9 @@ class MainScreen extends Component {
         <Link data-testid="shopping-cart-button" to="/shopCart">
           Botão CARRINHO
         </Link>
+        <p data-testid="home-initial-message">
+          Digite algum termo de pesquisa ou escolha uma categoria.
+        </p>
         <Category categories={categories} />
         <ProductList categorieId="MLB1055" query="xiaomi" />
       </div>
