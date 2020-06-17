@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import * as api from '../services/api';
 
-export class ProductList extends Component {
+class ProductList extends Component {
   constructor(props) {
     super(props);
 

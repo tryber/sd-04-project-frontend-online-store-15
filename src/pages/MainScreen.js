@@ -11,6 +11,8 @@ class MainScreen extends Component {
     this.state = {
       categories: [],
       products: [],
+      selectedCategory: '',
+      searchQuery: ''
     };
   }
 
