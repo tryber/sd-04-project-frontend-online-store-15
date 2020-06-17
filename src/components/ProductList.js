@@ -4,11 +4,14 @@ export class ProductList extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { searchText: props.searchText };
+    this.state = {
+      searchQuery: props.search,
+      productCategorie: prop.category,
+    };
   }
 
   componentDidMount = () => {
-    const { searchText } = this.state;
+    const { searchQuery, productCategorie } = this.state;
   };
 
   render() {
