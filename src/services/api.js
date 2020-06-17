@@ -5,5 +5,5 @@ export const getProductsFromCategoryAndQuery = (categoryId, query) => fetch(
   `https://api.mercadolibre.com/sites/MLB/search?category=${categoryId}&q=${query}`,
 ).then((response) => response.json());
 
-export const getDetails = (id) => fetch(`ttps://api.mercadolibre.com/items/${id}`)
+export const getDetails = (id) => fetch(`https://api.mercadolibre.com/items/${id}`)
   .then((response) => response.json());
