@@ -17,7 +17,7 @@ export const getProductsFromCategoryAndQuery = (categoryId, query) => {
     .then((response) => response.json());
 };
 
-export const getDetails = (id) => {
+export const getDetails = id => {
   return fetch(`ttps://api.mercadolibre.com/items/${id}`)
-    .then(response => response.json());
+    .then((response => response.json());
 };
