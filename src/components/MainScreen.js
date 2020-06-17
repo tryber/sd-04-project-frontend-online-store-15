@@ -16,8 +16,6 @@ class MainScreen extends Component {
     Api.getCategories().then((categories) => this.setState({ categories }));
   }
 
-  handleClickCategory() {}
-
   render() {
     const { categories } = this.state;
     return (
