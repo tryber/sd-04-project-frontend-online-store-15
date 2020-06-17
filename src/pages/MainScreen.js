@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import * as Api from '../services/api';
-import Category from '../components/Category';
-import SearchBar from '../components/SearchBar';
-import ProductList from '../components/ProductsList';
+import { Category, SearchBar } from '../components';
 
 class MainScreen extends Component {
   constructor() {
