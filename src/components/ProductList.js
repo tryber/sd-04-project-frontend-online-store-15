@@ -4,7 +4,7 @@ export class ProductList extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { searchText: '' };
+    this.state = { searchText: props.searchText };
   }
 
   render() {
