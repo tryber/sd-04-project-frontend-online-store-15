@@ -12,7 +12,7 @@ class MainScreen extends Component {
       categories: [],
       products: [],
       selectedCategory: '',
-      searchQuery: ''
+      searchQuery: '',
     };
   }
 
