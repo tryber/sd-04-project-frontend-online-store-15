@@ -3,7 +3,8 @@ import * as Api from '../services/api';
 
 class Details extends Component {
   async componentDidMount() {
-    Api.getDetails('MLB1191972200').then((data) => {
+    // Recebe os detalhes via api utilizando id passado no Path
+    Api.getDetails(this.props.match.params.id).then((data) => {
       const {
         title, price, pictures, attributes,
         currency_id: currency, available_quantity: available,
