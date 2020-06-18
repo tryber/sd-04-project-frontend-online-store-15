@@ -26,7 +26,7 @@ class SearchBar extends Component {
     return (
       <header>
         <nav className="searchBar">
-          <h1 className="">Store</h1>
+          <h1 className="">Search</h1>
         </nav>
         <div className="search">
           <form onSubmit={this.handleSubmit}>

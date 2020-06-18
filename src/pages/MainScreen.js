@@ -8,7 +8,6 @@ class MainScreen extends Component {
     super();
     this.state = {
       categories: [],
-      products: [],
       selectedCategory: '',
       searchQuery: '',
     };
@@ -33,11 +32,8 @@ class MainScreen extends Component {
         <Link data-testid="shopping-cart-button" to="/shopCart">
           Botão CARRINHO
         </Link>
-        <p data-testid="home-initial-message">
-          Digite algum termo de pesquisa ou escolha uma categoria.
-        </p>
+        <ProductsList categoryId={selectedCategory} query={searchQuery} />
         <Category categories={categories} />
-        <ProductsList categorieId={selectedCategory} query={searchQuery} />
       </div>
     );
   }
