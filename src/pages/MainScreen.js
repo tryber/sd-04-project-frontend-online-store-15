@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+
+import '../styles/MainScreen.css';
+
 import * as Api from '../services/api';
 import { Category, SearchBar, ProductsList } from '../components';
 
@@ -28,10 +31,13 @@ class MainScreen extends Component {
 
     return (
       <div>
-        <SearchBar onSearch={this.handleSearch} />
-        <Link data-testid="shopping-cart-button" to="/shopCart">
-          Botão CARRINHO
-        </Link>
+        <header>
+          <h1>Online Store</h1>
+          <SearchBar onSearch={this.handleSearch} />
+          <Link data-testid="shopping-cart-button" to="/shopCart">
+            Botão CARRINHO
+          </Link>
+        </header>
         <ProductsList categoryId={selectedCategory} query={searchQuery} />
         <Category categories={categories} />
       </div>
