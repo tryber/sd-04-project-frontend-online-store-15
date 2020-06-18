@@ -2,20 +2,22 @@ import React, { Component } from 'react';
 
 class Category extends Component {
   render() {
-    const { categories } = this.props;
+    const { categories, change } = this.props;
 
     return (
       <div className="categoriesList">
         {
           categories.map(({ id, name }) => (
-            <div
+            <button
               data-testid="category"
               key={id}
+              type="button"
+              onClick={() => change(id)}
             >
-              <button type="button">{name}</button>
-            </div>
+              {name}
+            </button>
           ))
-        }
+  }
       </div>
     );
   }

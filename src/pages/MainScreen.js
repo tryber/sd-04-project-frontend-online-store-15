@@ -13,6 +13,7 @@ class MainScreen extends Component {
     };
 
     this.handleSearch = this.handleSearch.bind(this);
+    this.changeCategory = this.changeCategory.bind(this);
   }
 
   componentDidMount() {
@@ -21,6 +22,10 @@ class MainScreen extends Component {
 
   handleSearch(searchText) {
     this.setState({ searchQuery: searchText });
+  }
+
+  changeCategory(id) {
+    this.setState({ selectedCategory: id });
   }
 
   render() {
@@ -33,7 +38,7 @@ class MainScreen extends Component {
           Botão CARRINHO
         </Link>
         <ProductsList categoryId={selectedCategory} query={searchQuery} />
-        <Category categories={categories} />
+        <Category categories={categories} change={this.changeCategory} />
       </div>
     );
   }
