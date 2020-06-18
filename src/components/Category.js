@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import * as Api from '../services/api';
 
 class Category extends Component {
   render() {
-    const { categories } = this.props;
+    const { categories, change } = this.props;
 
     return (
       <div className="categoriesList">
@@ -13,7 +12,7 @@ class Category extends Component {
               data-testid="category"
               key={id}
             >
-              <button type="button">{name}</button>
+              <button type="button" onClick={() => change(id)}>{name}</button>
             </div>
           ))
         }
