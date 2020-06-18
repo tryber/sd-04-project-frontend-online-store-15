@@ -31,9 +31,8 @@ class ProductList extends Component {
     const { categorieId, query } = this.props;
 
     if (Api.getProductsFromCategoryAndQuery(categorieId, query)) {
-      Api.getProductsFromCategoryAndQuery(categorieId, query).then((data) =>
-        this.setState({ products: data.results })
-      );
+      Api.getProductsFromCategoryAndQuery(categorieId, query)
+        .then((data) => this.setState({ products: data.results }));
     }
   }
 
