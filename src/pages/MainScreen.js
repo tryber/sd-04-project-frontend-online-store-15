@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import * as Api from '../services/api';
-import { Category, SearchBar } from '../components';
+import { Category, SearchBar, ProductsList } from '../components';
 
 class MainScreen extends Component {
   constructor() {
@@ -12,17 +12,24 @@ class MainScreen extends Component {
       selectedCategory: '',
       searchQuery: '',
     };
+
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
   componentDidMount() {
     Api.getCategories().then((categories) => this.setState({ categories }));
   }
 
+  handleSearch(searchText) {
+    this.setState({ searchQuery: searchText });
+  }
+
   render() {
-    const { categories } = this.state;
+    const { categories, searchQuery, selectedCategory } = this.state;
+
     return (
       <div>
-        <SearchBar />
+        <SearchBar onSearch={this.handleSearch} />
         <Link data-testid="shopping-cart-button" to="/shopCart">
           Botão CARRINHO
         </Link>
@@ -30,6 +37,7 @@ class MainScreen extends Component {
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
         <Category categories={categories} />
+        <ProductsList categorieId={selectedCategory} query={searchQuery} />
       </div>
     );
   }

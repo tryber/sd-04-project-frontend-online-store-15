@@ -5,6 +5,9 @@ class SearchBar extends Component {
     super(props);
 
     this.state = { searchText: '' };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
@@ -13,6 +16,10 @@ class SearchBar extends Component {
 
   handleSubmit(event) {
     const { searchText } = this.state;
+    const { onSearch } = this.props;
+
+    event.preventDefault();
+    onSearch(searchText);
   }
 
   render() {
@@ -23,8 +30,15 @@ class SearchBar extends Component {
         </nav>
         <div className="search">
           <form onSubmit={this.handleSubmit}>
-            <input type="text" data-testid="query-input" name="searchInput" onChange={this.handleChange} />
-            <button type="submit" data-testid="query-button" id="search-btn">Procurar</button>
+            <input
+              type="text"
+              data-testid="query-input"
+              name="searchInput"
+              onChange={this.handleChange}
+            />
+            <button type="submit" data-testid="query-button" id="search-btn">
+              Procurar
+            </button>
           </form>
         </div>
       </header>
