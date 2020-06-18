@@ -31,8 +31,9 @@ class ProductList extends Component {
     const { categorieId, query } = this.props;
 
     if (Api.getProductsFromCategoryAndQuery(categorieId, query)) {
-      Api.getProductsFromCategoryAndQuery(categorieId, query)
-        .then((data) => this.setState({ products: data.results }));
+      Api.getProductsFromCategoryAndQuery(categorieId, query).then((data) =>
+        this.setState({ products: data.results })
+      );
     }
   }
 
@@ -50,16 +51,16 @@ class ProductList extends Component {
     return (
       <div>
         {products.map((product) => (
-          <div
-            data-testid="product"
-            key={product.id}
-            className="product-card"
-            onClick={() => this.handleProductClick(product.id)}
-          >
-            <div className="product-title">{product.title}</div>
-            <div className="product-info">
-              <img src={product.thumbnail} alt="product" />
-              <p>{`R$ ${product.price}`}</p>
+          <div data-testid="product" key={product.id} className="product-card">
+            <div
+              data-testid="product-detail-link"
+              onClick={() => this.handleProductClick(product.id)}
+            >
+              <div className="product-title">{product.title}</div>
+              <div className="product-info">
+                <img src={product.thumbnail} alt="product" />
+                <p>{`R$ ${product.price}`}</p>
+              </div>
             </div>
           </div>
         ))}
