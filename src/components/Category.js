@@ -8,14 +8,16 @@ class Category extends Component {
       <div className="categoriesList">
         {
           categories.map(({ id, name }) => (
-            <div
+            <button
               data-testid="category"
               key={id}
+              type="button"
+              onClick={() => change(id)}
             >
-              <button type="button" onClick={() => change(id)}>{name}</button>
-            </div>
+              {name}
+            </button>
           ))
-        }
+  }
       </div>
     );
   }
