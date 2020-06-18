@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import * as api from '../services/api';
+import * as Api from '../services/api';
 
 class ProductList extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class ProductList extends Component {
   }
 
   componentDidMount() {
-    // GET products from api with default props
+    // GET products from Api with default props
     this.getProducts();
   }
 
@@ -26,13 +26,14 @@ class ProductList extends Component {
     }
   }
 
-  // GET products from api (params: categoryId, query)
+  // GET products from Api (params: categoryId, query)
   getProducts() {
     const { categorieId, query } = this.props;
 
-    api
-      .getProductsFromCategoryAndQuery(categorieId, query)
-      .then((data) => this.setState({ products: data.results }));
+    if (Api.getProductsFromCategoryAndQuery(categorieId, query)) {
+      Api.getProductsFromCategoryAndQuery(categorieId, query)
+        .then((data) => this.setState({ products: data.results }));
+    }
   }
 
   // Handle click on product card
