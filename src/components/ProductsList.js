@@ -1,31 +1,42 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import * as api from '../services/api';
+import * as Api from '../services/api';
 
 class ProductList extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      query: props.query,
-      categorieId: props.categorieId,
       products: [],
-      redirectToProduct: '',
+      redirectToProduct: '', // Redirect when ID is given
     };
   }
 
   componentDidMount() {
+    // GET products from Api with default props
     this.getProducts();
   }
 
-  getProducts() {
-    const { categorieId, query } = this.state;
+  componentDidUpdate(nextProps) {
+    const { query } = this.props;
 
-    api
-      .getProductsFromCategoryAndQuery(categorieId, query)
-      .then((data) => this.setState({ products: data.results }));
+    // Check with any props has changed on component update
+    if (nextProps.query !== query) {
+      this.getProducts();
+    }
   }
 
+  // GET products from Api (params: categoryId, query)
+  getProducts() {
+    const { categorieId, query } = this.props;
+
+    if (Api.getProductsFromCategoryAndQuery(categorieId, query)) {
+      Api.getProductsFromCategoryAndQuery(categorieId, query)
+        .then((data) => this.setState({ products: data.results }));
+    }
+  }
+
+  // Handle click on product card
   handleProductClick(id) {
     this.setState({ redirectToProduct: id });
   }
@@ -33,21 +44,22 @@ class ProductList extends Component {
   render() {
     const { products, redirectToProduct } = this.state;
 
+    // Redirect to Product Details
     if (redirectToProduct) return <Redirect to={`details/${redirectToProduct}`} />;
 
     return (
       <div>
         {products.map((product) => (
-          <div
-            data-testid="product"
-            key={product.id}
-            className="product-card"
-            onClick={() => this.handleProductClick(product.id)}
-          >
-            <div className="product-title">{product.title}</div>
-            <div className="product-info">
-              <img src={product.thumbnail} alt="product" />
-              <p>{`R$ ${product.price}`}</p>
+          <div data-testid="product" key={product.id} className="product-card">
+            <div
+              data-testid="product-detail-link"
+              onClick={() => this.handleProductClick(product.id)}
+            >
+              <div className="product-title">{product.title}</div>
+              <div className="product-info">
+                <img src={product.thumbnail} alt="product" />
+                <p>{`R$ ${product.price}`}</p>
+              </div>
             </div>
           </div>
         ))}
