@@ -3,7 +3,10 @@ import { cartDownIcon } from '../icons';
 
 class ProductResume extends Component {
   render() {
-    const { handleProductClick, product, product: { thumbnail, price, title }, addNewItem } = this.props;
+    const {
+      handleProductClick, product,
+      product: { thumbnail, price, title }, addNewItem,
+    } = this.props;
     return (
       <div data-testid="product" className="card">
         <div
