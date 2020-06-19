@@ -41,7 +41,7 @@ class MainScreen extends Component {
             <img src={cartIcon} alt="Cart Icon" />
           </button>
         </header>
-        {product ? <Details id={product} />
+        {product ? <Details product={product} />
           : (
             <div>
               <div className="product-list">
