@@ -15,6 +15,7 @@ header {
   align-items: center;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .cart-button {
@@ -35,6 +36,7 @@ header {
 }
 
 .search-form {
+  align-items: center;
   background-color: rgb(224, 224, 224);
   border-radius: 10px;
   display: flex;
@@ -76,6 +78,35 @@ header {
   }
 
   .search-form {
-    width: 40%;
+    width: 30%;
+  }
+}
+
+@media screen and ( min-width : 1300px ) {
+
+  .header-title {
+    font-size: 3em;
+  }
+
+  .search-form {
+    border-radius: 20px;
+    height: 30px;
+  }
+
+  .input-form {
+    font-size: 1.3em;
+  }
+
+  .img-form {
+    width: 20px;
+  }
+
+  .cart-button {
+    border-radius: 20px;
+    font-size: 1.7em;
+  }
+
+  .cart-button > img {
+    width: 40px;
   }
 }
