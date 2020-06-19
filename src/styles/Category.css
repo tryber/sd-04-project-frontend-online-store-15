@@ -12,10 +12,9 @@
 }
 
 .categories-list > button {
-  background-color: rgb(240, 240, 240);
   background: none;
-  border-radius: 10px;
   border: 1px solid rgb(224, 224, 224);
+  border-radius: 10px;
   margin: 2px;
   padding: 4px;
 }
@@ -24,10 +23,10 @@
   background-color: rgb(224, 224, 224);
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width : 550px) {
 
  .categories {
-    width: 70%;
+  width: 70%;
  }
 
  .categories-list {
@@ -35,7 +34,7 @@
  }
 }
 
-@media screen and (min-width: 551px) {
+@media screen and (min-width : 551px) {
 
   .categories {
     width: 90%;
@@ -51,7 +50,7 @@
   }
 }
 
-@media screen and (min-width: 1001px) {
+@media screen and (min-width : 1001px) {
 
   .categories-list > button {
     flex: 1 1 20%;

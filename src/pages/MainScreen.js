@@ -39,7 +39,7 @@ class MainScreen extends Component {
     return (
       <div className="main-screen">
         <header>
-          <h1>My Store</h1>
+          <h1 className="header-title">My Store</h1>
           <SearchBar onSearch={this.handleSearch} />
           <button type="button" data-testid="shopping-cart-button" className="cart-button">
             <span>Cart</span>

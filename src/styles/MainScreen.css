@@ -7,9 +7,8 @@ header {
   width: 100%;
 }
 
-header > h1 {
+.header-title {
   text-align: center;
-  width: 100%;
 } 
 
 .main-screen {
@@ -21,8 +20,8 @@ header > h1 {
 .cart-button {
   align-items: center;
   background: none;
-  border-radius: 10px;
   border: none;
+  border-radius: 10px;
   display: flex;
   font-size: 1.1em;
 }
@@ -59,12 +58,18 @@ header > h1 {
   width: 15px;
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (max-width : 699px) {
+  .header-title {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width : 700px) {
   header {
     flex-wrap: nowrap;
   }
 
-  header > h1 {
+  .header-title {
     width: 35%;
   }
 
