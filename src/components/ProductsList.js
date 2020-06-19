@@ -3,6 +3,8 @@ import { Redirect } from 'react-router-dom';
 import * as Api from '../services/api';
 import ProductResume from './ProductResume';
 
+import '../styles/ProductsList.css';
+
 class ProductList extends Component {
   constructor(props) {
     super(props);
@@ -58,15 +60,13 @@ class ProductList extends Component {
     }
     // Return products list
     return (
-      <div>
-        {products.map((product) => (
-          <ProductResume
-            key={product.id}
-            handleProductClick={this.handleProductClick}
-            product={product}
-          />
-        ))}
-      </div>
+      products.map((product) => (
+        <ProductResume
+          key={product.id}
+          handleProductClick={this.handleProductClick}
+          product={product}
+        />
+      ))
     );
   }
 }

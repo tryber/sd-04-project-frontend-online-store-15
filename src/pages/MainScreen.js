@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link as button } from 'react-router-dom';
 
 import '../styles/MainScreen.css';
 
 import * as Api from '../services/api';
 import { Category, SearchBar, ProductsList } from '../components';
+
+import { cartIcon } from '../icons';
 
 class MainScreen extends Component {
   constructor() {
@@ -35,15 +37,18 @@ class MainScreen extends Component {
     const { categories, searchQuery, selectedCategory } = this.state;
 
     return (
-      <div>
+      <div className="main-screen">
         <header>
-          <h1>Online Store</h1>
+          <h1>My Store</h1>
           <SearchBar onSearch={this.handleSearch} />
-          <Link data-testid="shopping-cart-button" to="/shopCart">
-            Botão CARRINHO
-          </Link>
+          <button type="button" data-testid="shopping-cart-button" className="cart-button">
+            <span>Cart</span>
+            <img src={cartIcon} alt="Cart Icon" />
+          </button>
         </header>
-        <ProductsList categoryId={selectedCategory} query={searchQuery} />
+        <div className="product-list">
+          <ProductsList categoryId={selectedCategory} query={searchQuery} />
+        </div>
         <Category categories={categories} change={this.changeCategory} />
       </div>
     );
