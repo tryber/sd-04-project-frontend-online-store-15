@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link as button } from 'react-router-dom';
 
 import '../styles/MainScreen.css';
 
