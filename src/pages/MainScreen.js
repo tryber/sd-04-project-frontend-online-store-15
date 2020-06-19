@@ -20,11 +20,13 @@ class MainScreen extends Component {
 
     this.updateState = this.updateState.bind(this);
     this.toggleCart = this.toggleCart.bind(this);
+    this.renderHeader = this.renderHeader.bind(this);
   }
 
   componentDidMount() {
     Api.getCategories().then((categories) => this.setState({ categories }));
   }
+
 
   updateState(state, info) {
     this.setState({ [state]: info });
@@ -34,37 +36,41 @@ class MainScreen extends Component {
     this.setState((state) => ({ cart: !state.cart }));
   }
 
+  renderHeader() {
+    return (
+      <header>
+        <h1 className="header-title">My Store</h1>
+        <SearchBar onSearch={this.updateState} />
+        <button
+          type="button"
+          data-testid="shopping-cart-button"
+          className="cart-button"
+          onClick={this.toggleCart}
+        >
+          <span>Cart</span>
+          <img src={cartIcon} alt="Cart Icon" />
+        </button>
+      </header>
+    );
+  }
+
   render() {
     const { categories, searchQuery, selectedCategory, product, cart } = this.state;
     return (
       <div className="main-screen">
-        <header>
-          <h1 className="header-title">My Store</h1>
-          <SearchBar onSearch={this.updateState} />
-          <button
-            type="button"
-            data-testid="shopping-cart-button"
-            className="cart-button"
-            onClick={this.toggleCart}
-          >
-            <span>Cart</span>
-            <img src={cartIcon} alt="Cart Icon" />
-          </button>
-        </header>
+        {this.renderHeader()}
         {cart && <Cart />}
         {product ? <Details product={product} />
-          : (
-            <div>
-              <div className="product-list">
-                <ProductsList
-                  categoryId={selectedCategory}
-                  query={searchQuery}
-                  handleClick={this.updateState}
-                />
-              </div>
-              <Category categories={categories} change={this.updateState} />
-            </div>
-          )}
+          : [
+            <div className="product-list" key="product-list">
+              <ProductsList
+                categoryId={selectedCategory}
+                query={searchQuery}
+                handleClick={this.updateState}
+              />
+            </div>,
+            <Category key="categories" categories={categories} change={this.updateState} />,
+          ]}
       </div>
     );
   }
