@@ -4,9 +4,9 @@ class ResumeCart extends Component {
   render() {
     const { data: { title, price, thumbnail, available_quantity: available } } = this.props;
     return (
-      <div className="cart">
+      <div className="cart-item">
         <img src={thumbnail} alt="product thumbnail" />
-        <div className="cart-info">
+        <div className="item-info">
           <p data-testid="shopping-cart-product-name">{title}</p>
           <p>R$ {price}</p>
           <p>Quantity: <span data-testid="shopping-cart-product-quantity">{1}</span></p>

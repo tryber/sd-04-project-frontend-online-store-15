@@ -1,6 +1,5 @@
 .cart-list {
   align-items: center;
-  align-items: center;
   background-color: rgb(224, 224, 224);
   border-radius: 10px;
   display: flex;
@@ -11,17 +10,17 @@
   z-index: 10;
 }
 
-.cart {
+.cart-item {
   align-items: center;
   display: flex;
   width: 100%;
 }
 
-.cart > img {
+.cart-item > img {
   border-radius: 20px;
 }
 
-.cart-info {
+.item-info {
   padding: 10px;
 }
 
