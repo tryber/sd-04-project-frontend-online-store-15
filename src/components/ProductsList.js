@@ -9,6 +9,7 @@ class ProductList extends Component {
     super(props);
 
     this.state = { products: undefined };
+    this.addNewItem = this.addNewItem.bind(this);
   }
 
   componentDidMount() {
@@ -33,6 +34,10 @@ class ProductList extends Component {
     }
   }
 
+  addNewItem() {
+    this.props.addToCart(this.props.location.state.product);
+  }
+
   render() {
     const { products } = this.state;
     // Return initial message
@@ -45,7 +50,7 @@ class ProductList extends Component {
     }
     // Return No Results
     if (products.length === 0) {
-      return <p>Nenhum resultado encontrado.</p>;
+      return <p>Nen)hum resultado encontrado.</p>;
     }
     // Return products list
     return (
@@ -54,6 +59,7 @@ class ProductList extends Component {
           key={product.id}
           handleProductClick={this.props.handleClick}
           product={product}
+          addNewItem={this.addNewItem}
         />
       ))
     );

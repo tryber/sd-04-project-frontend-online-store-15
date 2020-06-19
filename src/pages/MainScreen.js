@@ -54,6 +54,10 @@ class MainScreen extends Component {
     );
   }
 
+  addNewItemToCart () {
+    this.setState((state)=> ({cartList:...state.cartList}))
+  }
+
   render() {
     const { categories, searchQuery, selectedCategory, product, cart } = this.state;
     return (
