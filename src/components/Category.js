@@ -12,12 +12,12 @@ class Category extends Component {
               data-testid="category"
               key={id}
               type="button"
-              onClick={() => change(id)}
+              onClick={() => change('selectedCategory', id)}
             >
               {name}
             </button>
           ))
-  }
+        }
       </div>
     );
   }
