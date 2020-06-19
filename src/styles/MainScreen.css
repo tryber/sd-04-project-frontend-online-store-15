@@ -9,7 +9,7 @@ header {
 
 .header-title {
   text-align: center;
-} 
+}
 
 .main-screen {
   align-items: center;
@@ -58,13 +58,15 @@ header {
   width: 15px;
 }
 
-@media screen and (max-width : 699px) {
+@media screen and ( max-width : 699px ) {
+
   .header-title {
     width: 100%;
   }
 }
 
-@media screen and (min-width : 700px) {
+@media screen and ( min-width : 700px ) {
+
   header {
     flex-wrap: nowrap;
   }

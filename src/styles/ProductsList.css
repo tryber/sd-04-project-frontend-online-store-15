@@ -28,8 +28,9 @@
   color: rgb(140, 209, 35);
   position: absolute;
   right: 10px;
-}  
-@media screen and (max-width : 550px) {
+}
+
+@media screen and ( max-width : 550px ) {
 
   .card {
     width: 100%;
@@ -37,24 +38,24 @@
 
   .card-title {
     font-size: 0.8em;
-  }  
+  }
 }
 
-@media screen and (min-width : 551px) and (max-width : 1000px) {
+@media screen and ( min-width : 551px ) and ( max-width : 1000px ) {
 
   .card {
     width: 50%;
   }
 }
 
-@media screen and (min-width: 1001px) and (max-width: 1300px) {
+@media screen and ( min-width : 1001px ) and ( max-width : 1300px ) {
 
   .card {
     width: 33%;
   }
 }
 
-@media screen and (min-width: 1301px) {
+@media screen and ( min-width : 1301px ) {
 
   .card {
     width: 400px;

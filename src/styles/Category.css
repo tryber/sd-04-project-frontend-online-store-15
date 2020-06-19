@@ -23,18 +23,18 @@
   background-color: rgb(224, 224, 224);
 }
 
-@media screen and (max-width : 550px) {
+@media screen and ( max-width : 550px ) {
 
- .categories {
-  width: 70%;
- }
+  .categories {
+    width: 70%;
+  }
 
- .categories-list {
-  flex-direction: column;
- }
+  .categories-list {
+    flex-direction: column;
+  }
 }
 
-@media screen and (min-width : 551px) {
+@media screen and ( min-width : 551px ) {
 
   .categories {
     width: 90%;
@@ -50,7 +50,7 @@
   }
 }
 
-@media screen and (min-width : 1001px) {
+@media screen and ( min-width : 1001px ) {
 
   .categories-list > button {
     flex: 1 1 20%;
