@@ -5,6 +5,7 @@ import '../styles/MainScreen.css';
 
 import * as Api from '../services/api';
 import { Category, SearchBar, ProductsList } from '../components';
+import Details from './ProductDetails';
 
 import { cartIcon } from '../icons';
 
@@ -17,39 +18,42 @@ class MainScreen extends Component {
       searchQuery: '',
     };
 
-    this.handleSearch = this.handleSearch.bind(this);
-    this.changeCategory = this.changeCategory.bind(this);
+    this.updateState = this.updateState.bind(this);
   }
 
   componentDidMount() {
     Api.getCategories().then((categories) => this.setState({ categories }));
   }
 
-  handleSearch(searchText) {
-    this.setState({ searchQuery: searchText });
-  }
-
-  changeCategory(id) {
-    this.setState({ selectedCategory: id });
+  updateState(state, info) {
+    this.setState({ [state]: info });
   }
 
   render() {
-    const { categories, searchQuery, selectedCategory } = this.state;
-
+    const { categories, searchQuery, selectedCategory, product } = this.state;
     return (
       <div className="main-screen">
         <header>
           <h1 className="header-title">My Store</h1>
-          <SearchBar onSearch={this.handleSearch} />
+          <SearchBar onSearch={this.updateState} />
           <button type="button" data-testid="shopping-cart-button" className="cart-button">
             <span>Cart</span>
             <img src={cartIcon} alt="Cart Icon" />
           </button>
         </header>
-        <div className="product-list">
-          <ProductsList categoryId={selectedCategory} query={searchQuery} />
-        </div>
-        <Category categories={categories} change={this.changeCategory} />
+        {product ? <Details id={product} />
+          : (
+            <div>
+              <div className="product-list">
+                <ProductsList
+                  categoryId={selectedCategory}
+                  query={searchQuery}
+                  handleClick={this.updateState}
+                />
+              </div>
+              <Category categories={categories} change={this.updateState} />
+            </div>
+          )}
       </div>
     );
   }

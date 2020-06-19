@@ -8,7 +8,7 @@ class ProductResume extends Component {
         <div
           className="card-product"
           data-testid="product-detail-link"
-          onClick={() => handleProductClick(id)}
+          onClick={() => handleProductClick('product', id)}
         >
           <img src={thumbnail} alt="product" />
           <span className="card-title">{title}</span>

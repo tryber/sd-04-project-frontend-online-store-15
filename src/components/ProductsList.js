@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import * as Api from '../services/api';
 import ProductResume from './ProductResume';
 
@@ -9,11 +8,7 @@ class ProductList extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      products: undefined,
-      redirectToProduct: '', // Redirect when ID is given
-    };
-    this.handleProductClick = this.handleProductClick.bind(this);
+    this.state = { products: undefined };
   }
 
   componentDidMount() {
@@ -32,20 +27,14 @@ class ProductList extends Component {
   // GET products from Api (params: categoryId, query)
   getProducts() {
     const { categoryId, query } = this.props;
-    if (!categoryId && !query) return;
-    Api.getProductsFromCategoryAndQuery(categoryId, query)
-      .then((data) => this.setState({ products: data.results }));
-  }
-
-  // Handle click on product card
-  handleProductClick(id) {
-    this.setState({ redirectToProduct: id });
+    if (categoryId || query) {
+      Api.getProductsFromCategoryAndQuery(categoryId, query)
+        .then((data) => this.setState({ products: data.results }));
+    }
   }
 
   render() {
-    const { products, redirectToProduct } = this.state;
-    // Redirect to Product Details
-    if (redirectToProduct) return <Redirect to={`details/${redirectToProduct}`} />;
+    const { products } = this.state;
     // Return initial message
     if (!products) {
       return (
@@ -63,7 +52,7 @@ class ProductList extends Component {
       products.map((product) => (
         <ProductResume
           key={product.id}
-          handleProductClick={this.handleProductClick}
+          handleProductClick={this.props.handleClick}
           product={product}
         />
       ))

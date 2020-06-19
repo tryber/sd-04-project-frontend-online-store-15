@@ -4,7 +4,7 @@ import * as Api from '../services/api';
 class Details extends Component {
   async componentDidMount() {
     // Recebe os detalhes via api utilizando id passado no Path
-    Api.getDetails(this.props.match.params.id).then((data) => {
+    Api.getDetails(this.props.id).then((data) => {
       const { title, price, pictures, attributes, available_quantity: available } = data;
       this.setState({ title, price, available, pictures, attributes });
     });
