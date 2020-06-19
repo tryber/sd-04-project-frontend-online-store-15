@@ -82,8 +82,8 @@ header {
   }
 }
 
-@media screen and ( min-width : 1300px) {
-  
+@media screen and ( min-width : 1300px ) {
+
   .header-title {
     font-size: 3em;
   }
@@ -102,8 +102,8 @@ header {
   }
 
   .cart-button {
-    font-size: 1.7em;
     border-radius: 20px;
+    font-size: 1.7em;
   }
 
   .cart-button > img {
