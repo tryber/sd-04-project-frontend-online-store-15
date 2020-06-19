@@ -29,6 +29,7 @@ header {
 
 .cart-button:hover {
   background-color: rgb(224, 224, 224);
+  cursor: pointer;
 }
 
 .cart-button > img {
@@ -54,6 +55,10 @@ header {
   background: none;
   border: none;
   display: flex;
+}
+
+.button-form:hover {
+  cursor: pointer;
 }
 
 .img-form {

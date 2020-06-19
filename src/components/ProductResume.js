@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { cartDownIcon } from '../icons';
 
 class ProductResume extends Component {
   render() {
@@ -12,14 +13,13 @@ class ProductResume extends Component {
         >
           <img src={thumbnail} alt="product" />
           <span className="card-title">{title}</span>
-          <span className="card-price">{`R$ ${price}`}</span>
-          <button
+          <div
             data-testid="product-add-to-cart"
-            type="button"
-            onClick={addNewItem}
+            className="card-price"
+            onClick={(e) => addNewItem(e, product)}
           >
-            Adicionar ao carrinho
-          </button>
+            <img src={cartDownIcon} alt="add to Cart" /> {`R$ ${price}`}
+          </div>
         </div>
       </div>
     );

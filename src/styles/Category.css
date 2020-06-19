@@ -21,6 +21,7 @@
 
 .categories-list > button:hover {
   background-color: rgb(224, 224, 224);
+  cursor: pointer;
 }
 
 @media screen and ( max-width : 550px ) {
