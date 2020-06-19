@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import * as Api from '../services/api';
 import ProductResume from './ProductResume';
 
+import '../styles/ProductsList.css';
+
 class ProductList extends Component {
   constructor(props) {
     super(props);
@@ -47,15 +49,13 @@ class ProductList extends Component {
     }
     // Return products list
     return (
-      <div>
-        {products.map((product) => (
-          <ProductResume
-            key={product.id}
-            handleProductClick={this.props.handleClick}
-            product={product}
-          />
-        ))}
-      </div>
+      products.map((product) => (
+        <ProductResume
+          key={product.id}
+          handleProductClick={this.props.handleClick}
+          product={product}
+        />
+      ))
     );
   }
 }

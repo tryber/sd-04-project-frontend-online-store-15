@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { searchIcon } from '../icons';
+
 class SearchBar extends Component {
   constructor(props) {
     super(props);
@@ -24,24 +26,20 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <header>
-        <nav className="searchBar">
-          <h1 className="">Search</h1>
-        </nav>
-        <div className="search">
-          <form onSubmit={this.handleSubmit}>
-            <input
-              type="text"
-              data-testid="query-input"
-              name="searchInput"
-              onChange={this.handleChange}
-            />
-            <button type="submit" data-testid="query-button" id="search-btn">
-              Procurar
-            </button>
-          </form>
-        </div>
-      </header>
+      <form onSubmit={this.handleSubmit} className="search-form">
+        <input
+          className="input-form"
+          type="text"
+          placeholder="Search"
+          data-testid="query-input"
+          name="searchInput"
+          onChange={this.handleChange}
+        />
+        <button className="button-form" type="submit" data-testid="query-button" id="search-btn">
+          <img className="img-form" src={searchIcon} alt="search icon" />
+        </button>
+      </form>
+
     );
   }
 }

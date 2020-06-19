@@ -2,18 +2,17 @@ import React, { Component } from 'react';
 
 class ProductResume extends Component {
   render() {
-    const { handleProductClick, product, product: { thumbnail, price, title } } = this.props;
+    const { handleProductClick, product: { id, thumbnail, price, title } } = this.props;
     return (
-      <div data-testid="product" className="product-card">
+      <div data-testid="product" className="card">
         <div
+          className="card-product"
           data-testid="product-detail-link"
-          onClick={() => handleProductClick('product', product)}
+          onClick={() => handleProductClick('product', id)}
         >
-          <div className="product-title">{title}</div>
-          <div className="product-info">
-            <img src={thumbnail} alt="product" />
-            <p>{`R$ ${price}`}</p>
-          </div>
+          <img src={thumbnail} alt="product" />
+          <span className="card-title">{title}</span>
+          <span className="card-price">{`R$ ${price}`}</span>
         </div>
       </div>
     );
