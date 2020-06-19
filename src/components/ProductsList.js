@@ -7,7 +7,6 @@ import '../styles/ProductsList.css';
 class ProductList extends Component {
   constructor(props) {
     super(props);
-
     this.state = { products: undefined };
   }
 
