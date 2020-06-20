@@ -16,11 +16,13 @@ class MainScreen extends Component {
       categories: [],
       selectedCategory: '',
       searchQuery: '',
+      cartList: [],
     };
 
     this.updateState = this.updateState.bind(this);
     this.toggleCart = this.toggleCart.bind(this);
     this.renderHeader = this.renderHeader.bind(this);
+    this.addCartItem = this.addCartItem.bind(this);
   }
 
   componentDidMount() {
@@ -34,6 +36,11 @@ class MainScreen extends Component {
 
   toggleCart() {
     this.setState((state) => ({ cart: !state.cart }));
+  }
+
+  addCartItem(event, product) {
+    this.setState((state) => ({ cartList: [...state.cartList, product] }));
+    event.stopPropagation();
   }
 
   renderHeader() {
@@ -55,11 +62,11 @@ class MainScreen extends Component {
   }
 
   render() {
-    const { categories, searchQuery, selectedCategory, product, cart } = this.state;
+    const { categories, searchQuery, selectedCategory, product, cart, cartList } = this.state;
     return (
       <div className="main-screen">
         {this.renderHeader()}
-        {cart && <Cart />}
+        {cart && <Cart list={cartList} />}
         {product ? <Details product={product} />
           : [
             <div className="product-list" key="product-list">
@@ -67,6 +74,7 @@ class MainScreen extends Component {
                 categoryId={selectedCategory}
                 query={searchQuery}
                 handleClick={this.updateState}
+                addCartItem={this.addCartItem}
               />
             </div>,
             <Category key="categories" categories={categories} change={this.updateState} />,

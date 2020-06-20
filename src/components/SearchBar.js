@@ -21,7 +21,7 @@ class SearchBar extends Component {
     const { onSearch } = this.props;
 
     event.preventDefault();
-    onSearch('selectedCategory', searchText);
+    onSearch('searchQuery', searchText);
   }
 
   render() {

@@ -24,10 +24,25 @@
 }
 
 .card-price {
+  align-items: center;
+  border: 1px solid rgb(153, 255, 0);
+  border-radius: 20px;
   bottom: 7px;
-  color: rgb(140, 209, 35);
+  color: rgb(85, 141, 0);
+  display: flex;
+  padding: 3px;
   position: absolute;
   right: 10px;
+}
+
+.card-price:hover {
+  background-color: rgb(153, 255, 0);
+  color: black;
+  cursor: pointer;
+}
+
+.card-price > img {
+  width: 30px;
 }
 
 @media screen and ( max-width : 550px ) {

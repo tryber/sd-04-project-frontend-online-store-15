@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+import { cartDownIcon } from '../icons';
 
 class ProductResume extends Component {
   render() {
-    const { handleProductClick, product, product: { thumbnail, price, title } } = this.props;
+    const {
+      handleProductClick, product,
+      product: { thumbnail, price, title }, addNewItem,
+    } = this.props;
     return (
       <div data-testid="product" className="card">
         <div
@@ -12,7 +16,13 @@ class ProductResume extends Component {
         >
           <img src={thumbnail} alt="product" />
           <span className="card-title">{title}</span>
-          <span className="card-price">{`R$ ${price}`}</span>
+          <div
+            data-testid="product-add-to-cart"
+            className="card-price"
+            onClick={(e) => addNewItem(e, product)}
+          >
+            <img src={cartDownIcon} alt="add to Cart" /> {`R$ ${price}`}
+          </div>
         </div>
       </div>
     );

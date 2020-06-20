@@ -7,7 +7,6 @@ import '../styles/ProductsList.css';
 class ProductList extends Component {
   constructor(props) {
     super(props);
-
     this.state = { products: undefined };
   }
 
@@ -35,6 +34,7 @@ class ProductList extends Component {
 
   render() {
     const { products } = this.state;
+    const { handleClick, addCartItem } = this.props;
     // Return initial message
     if (!products) {
       return (
@@ -52,8 +52,9 @@ class ProductList extends Component {
       products.map((product) => (
         <ProductResume
           key={product.id}
-          handleProductClick={this.props.handleClick}
+          handleProductClick={handleClick}
           product={product}
+          addNewItem={addCartItem}
         />
       ))
     );
