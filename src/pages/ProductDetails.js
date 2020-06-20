@@ -3,6 +3,27 @@ import { cartDownIcon } from '../icons';
 import '../styles/ProductDetails.css';
 
 class Details extends Component {
+  renderInfo(price, available, addCartItem, product) {
+    return (
+      <div>
+        <span className="product-price">
+          R$ {price}
+        </span>
+        <span>
+          Avaliable: {available}
+        </span>
+        <button
+          className="product-cart"
+          type="button"
+          data-testid="product-detail-add-to-cart"
+          onClick={(e) => addCartItem(e, product)}
+        >
+          Add to Cart <img src={cartDownIcon} alt="add to cart" />
+        </button>
+      </div>
+    );
+  }
+
   render() {
     const {
       product: {
@@ -23,22 +44,7 @@ class Details extends Component {
               </li>
             ))}
           </ul>
-          <div>
-            <span className="product-price">
-              R$ {price}
-            </span>
-            <span>
-              Avaliable: {available}
-            </span>
-            <button
-              className="product-cart"
-              type="button"
-              data-testid="product-detail-add-to-cart"
-              onClick={(e) => addCartItem(e, product)}
-            >
-              Add to Cart <img src={cartDownIcon} alt="add to cart" />
-            </button>
-          </div>
+          {this.renderInfo(price, available, addCartItem, product)}
         </div>
       </div>
     );
