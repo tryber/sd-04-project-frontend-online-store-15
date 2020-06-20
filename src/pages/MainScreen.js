@@ -67,18 +67,24 @@ class MainScreen extends Component {
       <div className="main-screen">
         {this.renderHeader()}
         {cart && <Cart list={cartList} />}
-        {product ? <Details product={product} />
-          : [
-            <div className="product-list" key="product-list">
-              <ProductsList
-                categoryId={selectedCategory}
-                query={searchQuery}
-                handleClick={this.updateState}
-                addCartItem={this.addCartItem}
-              />
-            </div>,
-            <Category key="categories" categories={categories} change={this.updateState} />,
-          ]}
+        {product
+          && (
+            <Details
+              product={product}
+              onClick={this.updateState}
+              addCartItem={this.addCartItem}
+            />
+          )}
+        <div className="product-list">
+          <ProductsList
+            categoryId={selectedCategory}
+            query={searchQuery}
+            handleClick={this.updateState}
+            addCartItem={this.addCartItem}
+          />
+        </div>
+        <Category categories={categories} change={this.updateState} />,
+
       </div>
     );
   }
