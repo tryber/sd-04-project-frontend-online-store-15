@@ -3,7 +3,8 @@ import { cartDownIcon } from '../icons';
 import '../styles/ProductDetails.css';
 
 class Details extends Component {
-  renderInfo(price, available, addCartItem, product) {
+  renderInfo() {
+    const { product: { price, available_quantity: available }, addCartItem, product } = this.props;
     return (
       <div>
         <span className="product-price">
@@ -25,12 +26,7 @@ class Details extends Component {
   }
 
   render() {
-    const {
-      product: {
-        title, price, thumbnail,
-        attributes, available_quantity: available,
-      }, onClick, addCartItem, product,
-    } = this.props;
+    const { product: { title, thumbnail, attributes }, onClick } = this.props;
     return (
       <div className="product-details">
         <button className="close" type="button" onClick={() => onClick('product')}>X</button>
@@ -44,7 +40,7 @@ class Details extends Component {
               </li>
             ))}
           </ul>
-          {this.renderInfo(price, available, addCartItem, product)}
+          {this.renderInfo()}
         </div>
       </div>
     );

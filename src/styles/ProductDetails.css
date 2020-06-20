@@ -84,7 +84,7 @@
 }
 
 @media screen and ( min-width : 700px ) and ( max-width : 1239px ) {
-  
+
   .product-details > img {
     width: 160px;
   }
