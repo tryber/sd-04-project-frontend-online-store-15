@@ -41,6 +41,16 @@ class Details extends Component {
             ))}
           </ul>
           {this.renderInfo()}
+          <form className="evaluation" action="">
+            <textarea
+              placeholder="Text"
+              name="evaluation"
+              cols="30"
+              rows="10"
+              data-testid="product-detail-evaluation"
+            />
+            <button type="submit">Avaliar</button>
+          </form>
         </div>
       </div>
     );
