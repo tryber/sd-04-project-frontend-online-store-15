@@ -4,10 +4,10 @@ import '../styles/ProductDetails.css';
 import { FreeShipping } from '../components';
 
 class Details extends Component {
-  renderInfo() {
+  renderExtra() {
     const { product: { price, available_quantity: available }, addCartItem, product } = this.props;
-    return (
-      <div>
+    return [
+      <div key="info">
         <span className="product-price">
           R$ {price}
         </span>
@@ -22,13 +22,8 @@ class Details extends Component {
         >
           Add to Cart <img src={cartDownIcon} alt="add to cart" />
         </button>
-      </div>
-    );
-  }
-
-  renderForm() {
-    return (
-      <form className="evaluation" action="">
+      </div>,
+      <form className="evaluation" action="" key="form">
         <textarea
           placeholder="Text"
           name="evaluation"
@@ -37,8 +32,8 @@ class Details extends Component {
           data-testid="product-detail-evaluation"
         />
         <button type="submit">Avaliar</button>
-      </form>
-    );
+      </form>,
+    ];
   }
 
   render() {
@@ -67,8 +62,7 @@ class Details extends Component {
               </li>
             ))}
           </ul>
-          {this.renderInfo()}
-          {this.renderForm()}
+          {this.renderExtra()}
         </div>
       </div>
     );
