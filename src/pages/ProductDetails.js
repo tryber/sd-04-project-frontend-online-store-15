@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { cartDownIcon, freeIcon } from '../icons';
+import { cartDownIcon } from '../icons';
 import '../styles/ProductDetails.css';
+import { FreeShipping } from '../components';
 
 class Details extends Component {
   renderInfo() {
@@ -25,6 +26,21 @@ class Details extends Component {
     );
   }
 
+  renderForm() {
+    return (
+      <form className="evaluation" action="">
+        <textarea
+          placeholder="Text"
+          name="evaluation"
+          cols="30"
+          rows="10"
+          data-testid="product-detail-evaluation"
+        />
+        <button type="submit">Avaliar</button>
+      </form>
+    );
+  }
+
   render() {
     const {
       product: {
@@ -40,12 +56,7 @@ class Details extends Component {
         <div className="details-img">
           <img src={thumbnail} alt="Product" className="thumb" />
           {free && (
-            <img
-              src={freeIcon}
-              alt="Free Shipping"
-              className="free-ship"
-              data-testid="free-shipping"
-            />
+            <FreeShipping />
           )}
         </div>
         <div className="product-info">
@@ -57,16 +68,7 @@ class Details extends Component {
             ))}
           </ul>
           {this.renderInfo()}
-          <form className="evaluation" action="">
-            <textarea
-              placeholder="Text"
-              name="evaluation"
-              cols="30"
-              rows="10"
-              data-testid="product-detail-evaluation"
-            />
-            <button type="submit">Avaliar</button>
-          </form>
+          {this.renderForm()}
         </div>
       </div>
     );

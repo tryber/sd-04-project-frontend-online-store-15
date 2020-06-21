@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { cartDownIcon, freeIcon } from '../icons';
+import { cartDownIcon } from '../icons';
+import { FreeShipping } from '.';
 
 class ProductResume extends Component {
   render() {
@@ -16,12 +17,7 @@ class ProductResume extends Component {
         >
           <img src={thumbnail} alt="product" />
           {free && (
-            <img
-              src={freeIcon}
-              alt="Free Shipping"
-              className="free-ship"
-              data-testid="free-shipping"
-            />
+            <FreeShipping />
           )}
           <span className="card-title">{title}</span>
           <div

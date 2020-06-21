@@ -116,8 +116,8 @@
   }
 
   .details-img > .free-ship {
-    width: 45px;
     border-radius: 25px;
+    width: 45px;
   }
 }
 
@@ -136,7 +136,7 @@
   }
 
   .details-img > .free-ship {
-    width: 55px;
     border-radius: 30px;
+    width: 55px;
   }
 }
