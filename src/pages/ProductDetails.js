@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { cartDownIcon } from '../icons';
+import { cartDownIcon, freeIcon } from '../icons';
 import '../styles/ProductDetails.css';
 
 class Details extends Component {
@@ -26,12 +26,28 @@ class Details extends Component {
   }
 
   render() {
-    const { product: { title, thumbnail, attributes }, onClick } = this.props;
+    const {
+      product: {
+        title,
+        thumbnail, attributes,
+        shipping: { free_shipping: free },
+      }, onClick,
+    } = this.props;
     return (
       <div className="product-details">
         <button className="close" type="button" onClick={() => onClick('product')}>X</button>
         <h1 className="product-title" data-testid="product-detail-name">{title}</h1>
-        <img src={thumbnail} alt="Product" />
+        <div className="details-img">
+          <img src={thumbnail} alt="Product" className="thumb" />
+          {free && (
+            <img
+              src={freeIcon}
+              alt="Free Shipping"
+              className="free-ship"
+              data-testid="free-shipping"
+            />
+          )}
+        </div>
         <div className="product-info">
           <ul className="attributes">
             {attributes.map((atr) => (
