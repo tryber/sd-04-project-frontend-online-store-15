@@ -19,6 +19,11 @@
   width: 100%;
 }
 
+.card-product:hover {
+  background: linear-gradient(90deg, white 20%, rgb(224, 224, 224) 100%);
+  cursor: pointer;
+}
+
 .card-title {
   margin: 0 7px;
 }
@@ -37,11 +42,23 @@
 
 .card-price:hover {
   background-color: rgb(153, 255, 0);
+  border: 1px solid rgb(85, 141, 0);
   color: black;
   cursor: pointer;
 }
 
 .card-price > img {
+  width: 30px;
+}
+
+.free-ship {
+  background-color: rgba(153, 255, 0, 0.61);
+  border: 1px solid rgb(85, 141, 0);
+  border-radius: 15px;
+  bottom: 0;
+  left: 0;
+  padding: 0 5px;
+  position: absolute;
   width: 30px;
 }
 

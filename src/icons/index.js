@@ -5,3 +5,4 @@ export { default as cartDownIcon } from './cartDown.png';
 export { default as cartCheckIcon } from './cartCheck.png';
 export { default as plusSelector } from './plusSelector.png';
 export { default as minusSelector } from './minusSelector.png';
+export { default as freeIcon } from './freeShipping.png';
