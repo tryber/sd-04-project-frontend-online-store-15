@@ -11,6 +11,11 @@ class Cart extends Component {
     this.updateCartTotal = this.updateCartTotal.bind(this);
   }
 
+  redirectToTarget(cart) {
+    const { history } = this.props;
+    history.push({ pathname: '/checkout', state: { cart } });
+  }
+
   updateCartTotal(operation, productPrice) {
     switch (operation) {
       case 'increase':
@@ -45,6 +50,13 @@ class Cart extends Component {
           <ResumeCart key={i.id} data={i} onQuantityChange={this.updateCartTotal} />
         ))}
         <div>Total: R$ {Math.round(cartTotal * 100) / 100}</div>
+        <button
+          type="button"
+          data-testid="checkout-products"
+          onClick={() => this.redirectToTarget()}
+        >
+          Finalizar Compra
+        </button>
       </div>
     );
   }
