@@ -5,15 +5,13 @@ class QuantitySelector extends Component {
   constructor() {
     super();
 
-    this.state = { selectedQuantity: 1 };
+    this.state = { selectedQuantity: 0 };
 
     this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
-    const { onChange } = this.props;
-
-    onChange('increase');
+    this.handleChange('increase');
   }
 
   handleChange(operation) {
