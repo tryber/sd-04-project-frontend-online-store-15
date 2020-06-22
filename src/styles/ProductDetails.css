@@ -76,6 +76,28 @@
   cursor: pointer;
 }
 
+.evaluation {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 90%;
+}
+
+.evaluation > textarea {
+  background: none;
+  border: 1px solid rgb(202, 202, 202);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 20px;
+}
+
+.evaluation > button {
+  background: none;
+  border: 1px solid rgb(202, 202, 202);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
 @media screen and ( min-width : 450px ) and ( max-width : 1239px ) {
 
   .product-details {
