@@ -2,6 +2,7 @@
   "extends": "airbnb",
   "rules": {
     "no-console": "off",
+    "default-case": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/prefer-stateless-function": 0,
     "react/prop-types": 0,
