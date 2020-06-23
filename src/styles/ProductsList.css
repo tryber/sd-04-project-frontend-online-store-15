@@ -17,7 +17,6 @@
   padding: 10px 0;
   position: relative;
   width: 100%;
-  height: 112px;
 }
 
 .card-product:hover {
@@ -26,10 +25,10 @@
 }
 
 .card-title {
-  margin: 0 7px;
   font-size: 0.8em;
+  margin: 0 7px;
+  max-height: 58px;
   overflow: hidden;
-  max-height: 60%;
 }
 
 .card-price {
