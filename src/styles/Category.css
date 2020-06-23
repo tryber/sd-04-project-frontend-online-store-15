@@ -2,11 +2,13 @@
   align-items: center;
   display: flex;
   flex-direction: column;
+  border-right: 1px solid rgb(224, 224, 224);
 }
 
 .categories-list {
-  align-items: flex-start;
+  align-items: center;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   width: 100%;
 }
@@ -17,6 +19,7 @@
   border-radius: 10px;
   margin: 2px;
   padding: 4px;
+  width: 90%;
 }
 
 .categories-list > button:hover {
@@ -24,38 +27,8 @@
   cursor: pointer;
 }
 
-@media screen and ( max-width : 550px ) {
-
-  .categories {
-    width: 70%;
-  }
-
-  .categories-list {
-    flex-direction: column;
-  }
-}
-
-@media screen and ( min-width : 551px ) {
-
-  .categories {
-    width: 90%;
-  }
-
-  .categories-list {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  .categories-list > button {
-    flex: 1 1 25%;
-  }
-}
-
-@media screen and ( min-width : 1001px ) {
-
-  .categories-list > button {
-    flex: 1 1 20%;
-  }
+.categories {
+  width: 25%;
 }
 
 @media screen and ( min-width : 1300px ) {

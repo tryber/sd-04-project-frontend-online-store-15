@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { plusSelector, minusSelector } from '../icons';
 
 class QuantitySelector extends Component {
   constructor() {
@@ -42,21 +41,21 @@ class QuantitySelector extends Component {
 
     return (
       <div className="quantity-selector">
-        <span data-testid="shopping-cart-product-quantity">{selectedQuantity}</span>
-        <div className="selectors">
-          <button
-            type="button"
-            data-testid="product-increase-quantity"
-            onClick={() => this.handleChange('increase')}
-          >
-            <img src={plusSelector} alt="plus" />
-          </button>
+        <div className="selector">
           <button
             type="button"
             data-testid="product-decrease-quantity"
             onClick={() => this.handleChange('decrease')}
           >
-            <img src={minusSelector} alt="minus" />
+            -
+          </button>
+          <span data-testid="shopping-cart-product-quantity">{selectedQuantity}</span>
+          <button
+            type="button"
+            data-testid="product-increase-quantity"
+            onClick={() => this.handleChange('increase')}
+          >
+            +
           </button>
         </div>
       </div>
