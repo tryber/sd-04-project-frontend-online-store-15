@@ -61,7 +61,7 @@ class MainScreen extends Component {
         >
           <span>Cart</span>
           <img src={cartIcon} alt="Cart Icon" />
-          <span>{quantityItemsCart}</span>
+          <span data-testid="shopping-cart-size">{quantityItemsCart}</span>
         </button>
       </header>
     );
