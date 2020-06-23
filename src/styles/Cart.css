@@ -37,8 +37,7 @@
   width: 100%;
 }
 
-.cart-item > div , 
-.cart-item > span {
+.cart-item > div , .cart-item > span {
   width: 16%;
 }
 
