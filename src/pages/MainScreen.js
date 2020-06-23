@@ -17,6 +17,7 @@ class MainScreen extends Component {
       selectedCategory: '',
       searchQuery: '',
       cartList: [],
+      quantityItemsCart: 0,
     };
 
     this.updateState = this.updateState.bind(this);
@@ -29,7 +30,6 @@ class MainScreen extends Component {
     Api.getCategories().then((categories) => this.setState({ categories }));
   }
 
-
   updateState(state, info) {
     this.setState({ [state]: info });
   }
@@ -39,11 +39,16 @@ class MainScreen extends Component {
   }
 
   addCartItem(event, product) {
-    this.setState((state) => ({ cartList: [...state.cartList, product] }));
+    this.setState((state) => ({
+      cartList: [...state.cartList, product],
+      quantityItemsCart: state.quantityItemsCart + 1,
+    }));
     event.stopPropagation();
   }
 
   renderHeader() {
+    const { quantityItemsCart } = this.state;
+
     return (
       <header>
         <h1 className="header-title">My Store</h1>
@@ -56,6 +61,7 @@ class MainScreen extends Component {
         >
           <span>Cart</span>
           <img src={cartIcon} alt="Cart Icon" />
+          <span>{quantityItemsCart}</span>
         </button>
       </header>
     );
@@ -66,15 +72,10 @@ class MainScreen extends Component {
     return (
       <div className="main-screen">
         {this.renderHeader()}
-        {cart && <Cart list={cartList} />}
-        {product
-          && (
-            <Details
-              product={product}
-              onClick={this.updateState}
-              addCartItem={this.addCartItem}
-            />
-          )}
+        {cart && <Cart list={cartList} onItemsChange={this.updateState} />}
+        {product && (
+          <Details product={product} onClick={this.updateState} addCartItem={this.addCartItem} />
+        )}
         <div className="product-list">
           <ProductsList
             categoryId={selectedCategory}
@@ -84,7 +85,6 @@ class MainScreen extends Component {
           />
         </div>
         <Category categories={categories} change={this.updateState} />,
-
       </div>
     );
   }

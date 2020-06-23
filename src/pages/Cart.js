@@ -12,18 +12,30 @@ class Cart extends Component {
   }
 
   updateCartTotal(operation, productPrice) {
+    const { onItemsChange } = this.props;
+
     switch (operation) {
       case 'increase':
-        this.setState((prevState) => ({
-          cartTotal: prevState.cartTotal + productPrice,
-          productsTotal: prevState.productsTotal + 1,
-        }));
+        this.setState(
+          (prevState) => ({
+            cartTotal: prevState.cartTotal + productPrice,
+            productsTotal: prevState.productsTotal + 1,
+          }), () => {
+            const { productsTotal } = this.state;
+            onItemsChange('quantityItemsCart', productsTotal);
+          },
+        );
         break;
       case 'decrease':
-        this.setState((prevState) => ({
-          cartTotal: prevState.cartTotal - productPrice,
-          productsTotal: prevState.productsTotal - 1,
-        }));
+        this.setState(
+          (prevState) => ({
+            cartTotal: prevState.cartTotal - productPrice,
+            productsTotal: prevState.productsTotal - 1,
+          }), () => {
+            const { productsTotal } = this.state;
+            onItemsChange('quantityItemsCart', productsTotal);
+          },
+        );
         break;
     }
   }
