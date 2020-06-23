@@ -1,15 +1,15 @@
 .categories {
   align-items: center;
+  border-right: 1px solid rgb(224, 224, 224);
   display: flex;
   flex-direction: column;
-  border-right: 1px solid rgb(224, 224, 224);
+  width: 25%;
 }
 
 .categories-list {
   align-items: center;
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+  flex-flow: column wrap;
   width: 100%;
 }
 
@@ -25,10 +25,6 @@
 .categories-list > button:hover {
   background-color: rgb(224, 224, 224);
   cursor: pointer;
-}
-
-.categories {
-  width: 25%;
 }
 
 @media screen and ( min-width : 1300px ) {
