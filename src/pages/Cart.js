@@ -20,7 +20,8 @@ class Cart extends Component {
           (prevState) => ({
             cartTotal: prevState.cartTotal + productPrice,
             productsTotal: prevState.productsTotal + 1,
-          }), () => {
+          }),
+          () => {
             const { productsTotal } = this.state;
             onItemsChange('quantityItemsCart', productsTotal);
           },
@@ -31,7 +32,8 @@ class Cart extends Component {
           (prevState) => ({
             cartTotal: prevState.cartTotal - productPrice,
             productsTotal: prevState.productsTotal - 1,
-          }), () => {
+          }),
+          () => {
             const { productsTotal } = this.state;
             onItemsChange('quantityItemsCart', productsTotal);
           },

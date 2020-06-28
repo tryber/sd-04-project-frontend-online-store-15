@@ -28,6 +28,9 @@ class MainScreen extends Component {
 
   componentDidMount() {
     Api.getCategories().then((categories) => this.setState({ categories }));
+    if (localStorage.cartState) {
+      this.setState(JSON.parse(localStorage.cartState));
+    }
   }
 
   updateState(state, info) {
@@ -38,12 +41,16 @@ class MainScreen extends Component {
     this.setState((state) => ({ cart: !state.cart }));
   }
 
-  addCartItem(event, product) {
-    this.setState((state) => ({
-      cartList: [...state.cartList, product],
-      quantityItemsCart: state.quantityItemsCart + 1,
-    }));
-    event.stopPropagation();
+  addCartItem(product, event) {
+    this.setState((state) => {
+      const cartState = {
+        cartList: [...state.cartList, product],
+        quantityItemsCart: state.quantityItemsCart + 1,
+      };
+      localStorage.cartState = JSON.stringify(cartState);
+      return cartState;
+    });
+    if (event) event.stopPropagation();
   }
 
   renderHeader() {
