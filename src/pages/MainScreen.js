@@ -76,15 +76,17 @@ class MainScreen extends Component {
         {product && (
           <Details product={product} onClick={this.updateState} addCartItem={this.addCartItem} />
         )}
-        <div className="product-list">
-          <ProductsList
-            categoryId={selectedCategory}
-            query={searchQuery}
-            handleClick={this.updateState}
-            addCartItem={this.addCartItem}
-          />
+        <div className="content">
+          <Category categories={categories} change={this.updateState} />
+          <div className="product-list">
+            <ProductsList
+              categoryId={selectedCategory}
+              query={searchQuery}
+              handleClick={this.updateState}
+              addCartItem={this.addCartItem}
+            />
+          </div>
         </div>
-        <Category categories={categories} change={this.updateState} />,
       </div>
     );
   }

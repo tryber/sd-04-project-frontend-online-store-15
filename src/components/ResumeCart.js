@@ -18,16 +18,13 @@ class ResumeCart extends Component {
     const { data: { title, price, thumbnail, available_quantity: available } } = this.props;
     return (
       <div className="cart-item">
-        <img src={thumbnail} alt="product thumbnail" />
-        <div className="item-info">
-          <p data-testid="shopping-cart-product-name">{title}</p>
-          <p>R$ {price}</p>
-          <div>
-            Quantity:
-            <QuantitySelector availability={available} onChange={this.handleQuantitySelection} />
-          </div>
-          <p>Available: {available}</p>
+        <div className="cart-product">
+          <img src={thumbnail} alt="product thumbnail" />
+          <span data-testid="shopping-cart-product-name">{title}</span>
         </div>
+        <span>R$ {price}</span>
+        <QuantitySelector availability={available} onChange={this.handleQuantitySelection} />
+        <span>{available}</span>
       </div>
     );
   }
