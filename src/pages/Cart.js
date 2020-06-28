@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 import { ResumeCart } from '../components';
-import { withRouter } from "react-router";
 import '../styles/Cart.css';
 
 class Cart extends Component {
@@ -52,7 +52,6 @@ class Cart extends Component {
   render() {
     const { list } = this.props;
     const { cartTotal } = this.state;
-
     if (list.length === 0) {
       return (
         <div className="cart">
@@ -70,8 +69,7 @@ class Cart extends Component {
         </div>
         <div className="cart-list">
           {list.map((i) => (
-            <ResumeCart key={i.id} data={i} onQuantityChange={this.updateCartTotal} />
-          ))}
+            <ResumeCart key={i.id} data={i} onQuantityChange={this.updateCartTotal} />))}
         </div>
         <div>Total: R$ {Math.round(cartTotal * 100) / 100}</div>
         <button
