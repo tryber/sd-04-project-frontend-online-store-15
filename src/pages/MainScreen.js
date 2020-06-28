@@ -12,12 +12,15 @@ import { cartIcon } from '../icons';
 class MainScreen extends Component {
   constructor() {
     super();
+    const cartState = JSON.parse(localStorage.cartState);
+
     this.state = {
       categories: [],
       selectedCategory: '',
       searchQuery: '',
       cartList: [],
       quantityItemsCart: 0,
+      ...cartState,
     };
 
     this.updateState = this.updateState.bind(this);
@@ -28,9 +31,6 @@ class MainScreen extends Component {
 
   componentDidMount() {
     Api.getCategories().then((categories) => this.setState({ categories }));
-    if (localStorage.cartState) {
-      this.setState(JSON.parse(localStorage.cartState));
-    }
   }
 
   updateState(state, info) {
