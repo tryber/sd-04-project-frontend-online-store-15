@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import '../styles/Cart.css';
+import { withRouter } from 'react-router';
 import { ResumeCart } from '../components';
+import '../styles/Cart.css';
 
 class Cart extends Component {
   constructor(props) {
@@ -9,6 +10,12 @@ class Cart extends Component {
     this.state = { cartTotal: 0, productsTotal: 0 };
 
     this.updateCartTotal = this.updateCartTotal.bind(this);
+    this.redirectToTarget = this.redirectToTarget.bind(this);
+  }
+
+  redirectToTarget() {
+    const { history, list } = this.props;
+    history.push({ pathname: '/checkout', list });
   }
 
   updateCartTotal(operation, productPrice) {
@@ -42,10 +49,19 @@ class Cart extends Component {
     }
   }
 
+  renderCartList() {
+    const { list } = this.props;
+    return (
+      <div className="cart-list">
+        {list.map((i) => (
+          <ResumeCart key={i.id} data={i} onQuantityChange={this.updateCartTotal} />))}
+      </div>
+    );
+  }
+
   render() {
     const { list } = this.props;
     const { cartTotal } = this.state;
-
     if (list.length === 0) {
       return (
         <div className="cart">
@@ -61,15 +77,18 @@ class Cart extends Component {
           <span>Quantity</span>
           <span>Avaliable</span>
         </div>
-        <div className="cart-list">
-          {list.map((i) => (
-            <ResumeCart key={i.id} data={i} onQuantityChange={this.updateCartTotal} />
-          ))}
-        </div>
+        {this.renderCartList()}
         <div>Total: R$ {Math.round(cartTotal * 100) / 100}</div>
+        <button
+          type="button"
+          data-testid="checkout-products"
+          onClick={this.redirectToTarget}
+        >
+          Finalizar Compra
+        </button>
       </div>
     );
   }
 }
 
-export default Cart;
+export default withRouter(Cart);
