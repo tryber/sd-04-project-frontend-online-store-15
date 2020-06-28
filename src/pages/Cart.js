@@ -49,6 +49,15 @@ class Cart extends Component {
     }
   }
 
+  renderCartList() {
+    return (
+      <div className="cart-list">
+        {list.map((i) => (
+          <ResumeCart key={i.id} data={i} onQuantityChange={this.updateCartTotal} />))}
+      </div>
+    );
+  }
+
   render() {
     const { list } = this.props;
     const { cartTotal } = this.state;
@@ -67,10 +76,7 @@ class Cart extends Component {
           <span>Quantity</span>
           <span>Avaliable</span>
         </div>
-        <div className="cart-list">
-          {list.map((i) => (
-            <ResumeCart key={i.id} data={i} onQuantityChange={this.updateCartTotal} />))}
-        </div>
+        {this.renderCartList()}
         <div>Total: R$ {Math.round(cartTotal * 100) / 100}</div>
         <button
           type="button"
