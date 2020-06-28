@@ -39,16 +39,24 @@ class Cart extends Component {
 
     if (list.length === 0) {
       return (
-        <div className="cart-list">
+        <div className="cart">
           <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>
         </div>
       );
     }
     return (
-      <div className="cart-list">
-        {list.map((i) => (
-          <ResumeCart key={i.id} data={i} onQuantityChange={this.updateCartTotal} />
-        ))}
+      <div className="cart">
+        <div className="cart-header">
+          <span>Product</span>
+          <span>Price</span>
+          <span>Quantity</span>
+          <span>Avaliable</span>
+        </div>
+        <div className="cart-list">
+          {list.map((i) => (
+            <ResumeCart key={i.id} data={i} onQuantityChange={this.updateCartTotal} />
+          ))}
+        </div>
         <div>Total: R$ {Math.round(cartTotal * 100) / 100}</div>
         <button
           type="button"

@@ -25,7 +25,10 @@
 }
 
 .card-title {
+  font-size: 0.8em;
   margin: 0 7px;
+  max-height: 58px;
+  overflow: hidden;
 }
 
 .card-price {
@@ -62,18 +65,11 @@
   width: 30px;
 }
 
-@media screen and ( max-width : 550px ) {
-
-  .card {
-    width: 100%;
-  }
-
-  .card-title {
-    font-size: 0.8em;
-  }
+.card {
+  width: 100%;
 }
 
-@media screen and ( min-width : 551px ) and ( max-width : 1000px ) {
+@media screen and ( min-width : 751px ) and ( max-width : 1000px ) {
 
   .card {
     width: 50%;
@@ -90,6 +86,6 @@
 @media screen and ( min-width : 1301px ) {
 
   .card {
-    width: 400px;
+    width: 25%;
   }
 }
