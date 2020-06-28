@@ -12,11 +12,18 @@ import { cartIcon } from '../icons';
 class MainScreen extends Component {
   constructor() {
     super();
+    let cartState = {
+      cartList: [],
+      quantityItemsCart: 0,
+    };
+    if (localStorage.cartState) {
+      cartState = JSON.parse(localStorage.cartState);
+    }
     this.state = {
       categories: [],
       selectedCategory: '',
       searchQuery: '',
-      cartList: [],
+      ...cartState,
     };
 
     this.updateState = this.updateState.bind(this);
@@ -29,7 +36,6 @@ class MainScreen extends Component {
     Api.getCategories().then((categories) => this.setState({ categories }));
   }
 
-
   updateState(state, info) {
     this.setState({ [state]: info });
   }
@@ -38,12 +44,21 @@ class MainScreen extends Component {
     this.setState((state) => ({ cart: !state.cart }));
   }
 
-  addCartItem(event, product) {
-    this.setState((state) => ({ cartList: [...state.cartList, product] }));
-    event.stopPropagation();
+  addCartItem(product, event) {
+    this.setState((state) => {
+      const cartState = {
+        cartList: [...state.cartList, product],
+        quantityItemsCart: state.quantityItemsCart + 1,
+      };
+      localStorage.cartState = JSON.stringify(cartState);
+      return cartState;
+    });
+    if (event) event.stopPropagation();
   }
 
   renderHeader() {
+    const { quantityItemsCart } = this.state;
+
     return (
       <header>
         <h1 className="header-title">My Store</h1>
@@ -56,6 +71,7 @@ class MainScreen extends Component {
         >
           <span>Cart</span>
           <img src={cartIcon} alt="Cart Icon" />
+          <span data-testid="shopping-cart-size">{quantityItemsCart}</span>
         </button>
       </header>
     );
@@ -66,15 +82,10 @@ class MainScreen extends Component {
     return (
       <div className="main-screen">
         {this.renderHeader()}
-        {cart && <Cart list={cartList} />}
-        {product
-          && (
-            <Details
-              product={product}
-              onClick={this.updateState}
-              addCartItem={this.addCartItem}
-            />
-          )}
+        {cart && <Cart list={cartList} onItemsChange={this.updateState} />}
+        {product && (
+          <Details product={product} onClick={this.updateState} addCartItem={this.addCartItem} />
+        )}
         <div className="content">
           <Category categories={categories} change={this.updateState} />
           <div className="product-list">

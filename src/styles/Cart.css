@@ -41,7 +41,7 @@
   width: 16%;
 }
 
-.cart-product {
+.cart-item > .cart-product {
   display: flex;
   width: 50%;
 }

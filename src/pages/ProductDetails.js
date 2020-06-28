@@ -18,7 +18,7 @@ class Details extends Component {
           className="product-cart"
           type="button"
           data-testid="product-detail-add-to-cart"
-          onClick={(e) => addCartItem(e, product)}
+          onClick={() => addCartItem(product)}
         >
           Add to Cart <img src={cartDownIcon} alt="add to cart" />
         </button>

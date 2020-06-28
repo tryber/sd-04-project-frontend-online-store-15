@@ -23,7 +23,7 @@ class ProductResume extends Component {
           <div
             data-testid="product-add-to-cart"
             className="card-price"
-            onClick={(e) => addNewItem(e, product)}
+            onClick={(e) => addNewItem(product, e)}
           >
             <img src={cartDownIcon} alt="add to Cart" /> {`R$ ${price}`}
           </div>
