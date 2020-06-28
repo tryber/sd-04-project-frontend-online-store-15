@@ -12,14 +12,17 @@ import { cartIcon } from '../icons';
 class MainScreen extends Component {
   constructor() {
     super();
-    const cartState = JSON.parse(localStorage.cartState);
-
+    let cartState = {
+      cartList: [],
+      quantityItemsCart: 0,
+    };
+    if (localStorage.cartState) {
+      cartState = JSON.parse(localStorage.cartState);
+    }
     this.state = {
       categories: [],
       selectedCategory: '',
       searchQuery: '',
-      cartList: [],
-      quantityItemsCart: 0,
       ...cartState,
     };
 
