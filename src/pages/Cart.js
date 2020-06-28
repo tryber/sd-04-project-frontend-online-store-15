@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import '../styles/Cart.css';
 import { ResumeCart } from '../components';
+import { withRouter } from "react-router";
+import '../styles/Cart.css';
 
 class Cart extends Component {
   constructor(props) {
@@ -9,11 +10,12 @@ class Cart extends Component {
     this.state = { cartTotal: 0, productsTotal: 0 };
 
     this.updateCartTotal = this.updateCartTotal.bind(this);
+    this.redirectToTarget = this.redirectToTarget.bind(this);
   }
 
-  redirectToTarget(cart) {
-    const { history } = this.props;
-    history.push({ pathname: '/checkout', state: { cart } });
+  redirectToTarget() {
+    const { history, list } = this.props;
+    history.push({ pathname: '/checkout', list });
   }
 
   updateCartTotal(operation, productPrice) {
@@ -61,7 +63,7 @@ class Cart extends Component {
         <button
           type="button"
           data-testid="checkout-products"
-          onClick={() => this.redirectToTarget()}
+          onClick={this.redirectToTarget}
         >
           Finalizar Compra
         </button>
@@ -70,4 +72,4 @@ class Cart extends Component {
   }
 }
 
-export default Cart;
+export default withRouter(Cart);

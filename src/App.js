@@ -6,8 +6,8 @@ import Checkoutpage from './pages/CheckoutPage';
 function App() {
   return (
     <BrowserRouter>
-      <MainScreen />
       <Switch>
+        <Route exact path="/" component={MainScreen} />
         <Route path="/checkout" component={Checkoutpage} />
       </Switch>
     </BrowserRouter>
