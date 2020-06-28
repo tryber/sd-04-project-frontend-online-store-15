@@ -50,6 +50,7 @@ class Cart extends Component {
   }
 
   renderCartList() {
+    const { list } = this.props;
     return (
       <div className="cart-list">
         {list.map((i) => (
