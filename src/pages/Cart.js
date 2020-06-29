@@ -11,11 +11,24 @@ class Cart extends Component {
 
     this.updateCartTotal = this.updateCartTotal.bind(this);
     this.redirectToTarget = this.redirectToTarget.bind(this);
+    this.saveCartTotal = this.saveCartTotal.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState(
+      { productsTotal: JSON.parse(localStorage.getItem('cartState')).quantityItemsCart },
+    );
   }
 
   redirectToTarget() {
     const { history, list } = this.props;
     history.push({ pathname: '/checkout', list });
+  }
+
+  saveCartTotal(total) {
+    const cart = JSON.parse(localStorage.getItem('cartState'));
+    cart.quantityItemsCart = total;
+    localStorage.setItem('cartState', JSON.stringify(cart));
   }
 
   updateCartTotal(operation, productPrice) {
@@ -31,6 +44,7 @@ class Cart extends Component {
           () => {
             const { productsTotal } = this.state;
             onItemsChange('quantityItemsCart', productsTotal);
+            this.saveCartTotal(productsTotal);
           },
         );
         break;
@@ -43,6 +57,7 @@ class Cart extends Component {
           () => {
             const { productsTotal } = this.state;
             onItemsChange('quantityItemsCart', productsTotal);
+            this.saveCartTotal(productsTotal);
           },
         );
         break;
