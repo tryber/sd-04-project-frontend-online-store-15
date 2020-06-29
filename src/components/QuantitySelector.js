@@ -7,10 +7,28 @@ class QuantitySelector extends Component {
     this.state = { selectedQuantity: 0 };
 
     this.handleChange = this.handleChange.bind(this);
+    this.saveSelectedQuantity = this.saveSelectedQuantity.bind(this);
   }
 
   componentDidMount() {
+    const { productId } = this.props;
     this.handleChange('increase');
+
+    const productQuantity = JSON.parse(localStorage.getItem('cartState')).cartList
+      .find((product) => product.id === productId).selected_quantity;
+
+    this.setState({ selectedQuantity: productQuantity });
+  }
+
+  saveSelectedQuantity() {
+    const { productId } = this.props;
+    const { selectedQuantity } = this.state;
+    const cart = JSON.parse(localStorage.getItem('cartState'));
+
+    cart.cartList.find((product) => product.id === productId)
+      .selected_quantity = selectedQuantity;
+
+    localStorage.setItem('cartState', JSON.stringify(cart));
   }
 
   handleChange(operation) {
@@ -33,7 +51,9 @@ class QuantitySelector extends Component {
         break;
     }
 
-    this.setState({ selectedQuantity: quantity });
+    this.setState({ selectedQuantity: quantity }, () => {
+      this.saveSelectedQuantity();
+    });
   }
 
   render() {
