@@ -27,13 +27,12 @@ class Cart extends Component {
   loadCartTotal() {
     const cartState = JSON.parse(localStorage.getItem('cartState'));
 
-    if (cartState) {
-      this.setState(
-        {
-          productsTotal: JSON.parse(localStorage.getItem('cartState')).quantityItemsCart,
-          cartTotal: JSON.parse(localStorage.getItem('cartState')).totalPrice,
-        },
-      );
+    if (cartState.quantityItemsCart) {
+      this.setState({ productsTotal: JSON.parse(localStorage.getItem('cartState')).quantityItemsCart });
+    }
+
+    if (cartState.totalPrice) {
+      this.setState({ cartTotal: Number(JSON.parse(localStorage.getItem('cartState')).totalPrice) });
     }
   }
 
