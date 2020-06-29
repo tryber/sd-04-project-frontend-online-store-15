@@ -23,7 +23,11 @@ class ResumeCart extends Component {
           <span data-testid="shopping-cart-product-name">{title}</span>
         </div>
         <span>R$ {price}</span>
-        <QuantitySelector productId={id} availability={available} onChange={this.handleQuantitySelection} />
+        <QuantitySelector
+          productId={id}
+          availability={available}
+          onChange={this.handleQuantitySelection}
+        />
         <span>{available}</span>
       </div>
     );
