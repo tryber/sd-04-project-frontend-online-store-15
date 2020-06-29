@@ -47,10 +47,10 @@ class CheckoutPage extends Component {
     return (
       <div>
         <h1>Revise seus produtos</h1>
-        {list.map((element) => (
+        {this.getCart().cartList.map((element) => (
           <div key={element.id}>
             <p>{element.title}</p>
-            <p>{element.price}</p>
+            <p>{`Preço: ${element.price}  quantidade: ${element.selected_quantity}`}</p>
           </div>
         ))}
         <h1>
