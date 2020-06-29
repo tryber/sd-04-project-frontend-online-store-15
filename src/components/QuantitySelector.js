@@ -8,11 +8,16 @@ class QuantitySelector extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.saveSelectedQuantity = this.saveSelectedQuantity.bind(this);
+    this.loadSelectedQuantity = this.loadSelectedQuantity.bind(this);
   }
 
   componentDidMount() {
-    const { productId } = this.props;
     this.handleChange('increase');
+    this.loadSelectedQuantity();
+  }
+
+  loadSelectedQuantity() {
+    const { productId } = this.props;
 
     const productQuantity = JSON.parse(localStorage.getItem('cartState')).cartList
       .find((product) => product.id === productId).selected_quantity;
