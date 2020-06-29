@@ -25,12 +25,16 @@ class Cart extends Component {
   }
 
   loadCartTotal() {
-    this.setState(
-      {
-        productsTotal: JSON.parse(localStorage.getItem('cartState')).quantityItemsCart,
-        cartTotal: JSON.parse(localStorage.getItem('cartState')).totalPrice,
-      },
-    );
+    const cartState = JSON.parse(localStorage.getItem('cartState'));
+
+    if (cartState) {
+      this.setState(
+        {
+          productsTotal: JSON.parse(localStorage.getItem('cartState')).quantityItemsCart,
+          cartTotal: JSON.parse(localStorage.getItem('cartState')).totalPrice,
+        },
+      );
+    }
   }
 
   saveCartTotal() {
