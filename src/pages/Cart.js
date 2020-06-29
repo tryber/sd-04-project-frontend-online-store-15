@@ -27,12 +27,13 @@ class Cart extends Component {
   loadCartTotal() {
     const cartState = JSON.parse(localStorage.getItem('cartState'));
 
-    if (cartState.quantityItemsCart) {
-      this.setState({ productsTotal: JSON.parse(localStorage.getItem('cartState')).quantityItemsCart });
-    }
-
-    if (cartState.totalPrice) {
-      this.setState({ cartTotal: Number(JSON.parse(localStorage.getItem('cartState')).totalPrice) });
+    if (cartState) { // Check for NPM test requeriment 13
+      if (cartState.quantityItemsCart) {
+        this.setState({ productsTotal: JSON.parse(localStorage.getItem('cartState')).quantityItemsCart });
+      }
+      if (cartState.totalPrice) {
+        this.setState({ cartTotal: Number(JSON.parse(localStorage.getItem('cartState')).totalPrice) });
+      }
     }
   }
 
