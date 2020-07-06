@@ -15,7 +15,7 @@ class ResumeCart extends Component {
   }
 
   render() {
-    const { data: { title, price, thumbnail, available_quantity: available } } = this.props;
+    const { data: { id, title, price, thumbnail, available_quantity: available } } = this.props;
     return (
       <div className="cart-item">
         <div className="cart-product">
@@ -23,7 +23,11 @@ class ResumeCart extends Component {
           <span data-testid="shopping-cart-product-name">{title}</span>
         </div>
         <span>R$ {price}</span>
-        <QuantitySelector availability={available} onChange={this.handleQuantitySelection} />
+        <QuantitySelector
+          productId={id}
+          availability={available}
+          onChange={this.handleQuantitySelection}
+        />
         <span>{available}</span>
       </div>
     );

@@ -45,9 +45,14 @@ class MainScreen extends Component {
   }
 
   addCartItem(product, event) {
+    const productInfo = {
+      ...product,
+      selected_quantity: 1,
+    };
+
     this.setState((state) => {
       const cartState = {
-        cartList: [...state.cartList, product],
+        cartList: [...state.cartList, productInfo],
         quantityItemsCart: state.quantityItemsCart + 1,
       };
       localStorage.cartState = JSON.stringify(cartState);
