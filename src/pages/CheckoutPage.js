@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
 class CheckoutPage extends Component {
+  getCart() {
+    return JSON.parse(localStorage.getItem('cartState'));
+  }
+
   checkoutForm() {
     return (
       <div>
@@ -20,19 +24,22 @@ class CheckoutPage extends Component {
   }
 
   render() {
-    const { location: { list } } = this.props;
     return (
       <div>
         <h1>Revise seus produtos</h1>
-        {list.map((element) => (
+        {this.getCart().cartList.map((element) => (
           <div key={element.id}>
             <p>{element.title}</p>
-            <p>{element.price}</p>
+            <p>{`Preço: ${element.price}  quantidade: ${element.selected_quantity}`}</p>
           </div>
         ))}
         <h1>
           Total:
-          {Math.round(list.map((inicial) => inicial.price).reduce((initial, acc) => initial + acc))}
+          {Math.round(
+            (this.getCart().cartList.reduce(
+              (total, product) => (total + (product.price * product.selected_quantity)), 0,
+            )) * 100,
+          ) / 100}
         </h1>
         {this.checkoutForm()}
       </div>
